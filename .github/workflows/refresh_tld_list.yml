@@ -1,0 +1,27 @@
+name: Refresh IANA Top Level Domain List
+
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'
+
+jobs:
+  refresh_tlds:
+    name: Refresh IANA TLDs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out
+        uses: actions/checkout@master
+
+      - name: Install Pandas
+        run: pip install pandas
+
+      - name: Run Refresh
+        run: python iana_tlds.py
+
+      - name: Commit latest version
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

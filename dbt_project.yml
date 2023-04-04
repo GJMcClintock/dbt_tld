@@ -1,0 +1,10 @@
+name: 'dbt_tld'
+version: '0.1.0'
+
+config-version: 2
+
+require-dbt-version: [">=1.0.0", "<2.0.0"]
+
+seeds:
+  +database: "{{ var('tld_database') }}" 
+  +schema: "{{ var('tld_schema') }}" 
