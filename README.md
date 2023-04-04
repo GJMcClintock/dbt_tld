@@ -8,9 +8,11 @@
  Maintenance of the list is performed via GitHub action sourcing the official [IANA list](https://data.iana.org/TLD/tlds-alpha-by-domain.txt).
 
  # Seed Location
- You must use the following variables to set the location of the seed file in your `dbt_project.yml` file:
+By default, the seed will materialize in your default database/schema for your target. You can change this by adding the following to your `dbt_project.yml`:
 
- ```
-    tld_database:
-    tld_schema:
- ```
+```
+seeds:
+  dbt_tld:
+    +database: <value>
+    +schema: <value>
+```
