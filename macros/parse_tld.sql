@@ -1,4 +1,4 @@
-{% macro parse_tld -%}
+{% macro parse_tld(string) -%}
     {{ return(adapter.dispatch('parse_tld', 'dbt_tld')(string)) }}
 {%- endmacro %}
 
